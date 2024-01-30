@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computational Intelligence | Universitas Nusa Putra</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Tambahkan Bootstrap Icons CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
+      type="text/css"
+    />
+    <style>
+      /* Tambahkan gaya kustom di sini */
+      .navbar {
+        background-color: var(--bs-light);
+        border-bottom: 0.1rem solid var(--bs-purple);
+        position: static;
+      }
+      a {
+        color: var(--bs-purple);
+        text-decoration: none;
+      }
+      a:hover {
+        color: var(--bs-indigo);
+        text-decoration: underline;
+      }
+      button.nav-link-sidebar {
+        color: var(--bs-purple) !important;
+      }
+
+      button.nav-link-sidebar.active {
+        background-color: var(--bs-purple) !important;
+        color: var(--bs-light) !important;
+      }
+
+      button.nav-link-sidebar:hover {
+        color: var(--bs-indigo) !important;
+      }
+
+      button.nav-link-sidebar.active:hover {
+        background-color: var(--bs-indigo) !important;
+        color: var(--bs-light) !important;
+      }
+
+      .dropzone {
+        background: var(--bs-light);
+        border-radius: 5px;
+        border: 2px dashed var(--bs-secondary);
+        border-image: none;
+        max-width: 500px;
+        padding: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--bs-dark);
+        padding: 10px;
+        color: var(--bs-light);
+        text-align: center;
+        display: none;
+      }
+
+      #cookie-banner button.cookie-accept {
+        background-color: var(--bs-purple);
+        color: var(--bs-light);
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
+
+      #cookie-banner button.cookie-denied {
+        background-color: var(--bs-dark);
+        border: 1px solid var(--bs-light);
+        color: var(--bs-light);
+        padding: 10px 20px;
+        /* border: none; */
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid m-0 p-0">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Computational Intelligence
+          </a>
+          
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav" role="tablist">
+            <!-- <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item">
+            <button class="a nav-link border-0 bg-transparent"
+            data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-disabled"
+          aria-selected="false">About</button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Kontak</a>
+          </li>
+        </ul> -->
+          
+          </div>
+          <div class="ms-auto"><a class="navbar-brand" href="#">Universitas Nusa Putra
+            <img src="https://iro.nusaputra.ac.id/wp-content/uploads/2018/05/LOGO-UNIVERSITAS-NUSA-PUTRA-300x300.png" alt="Computational Intelligence" height="24">
+            </a>  </div>
+        </div>
+      </nav>
+
+      <div
+        class="d-flex align-items-start w-100"
+        style="min-height: 85.9svh !important"
+      >
+        <div
+          class="nav flex-column nav-pills me-3 pt-3 col-2"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="vertical"
+          id="sidebar"
+        >
+          <button
+            class="nav-link nav-link-sidebar text-left  active"
+            id="v-pills-home-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-home"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-home"
+            aria-selected="true"
+          >
+            Image Enhancement (Adjustable)
+          </button>
+          <button
+            class="nav-link nav-link-sidebar text-left "
+            id="v-pills-profile-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-profile"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-profile"
+            aria-selected="false"
+          >
+            Image Enhancement
+          </button>
+          <button
+            class="nav-link nav-link-sidebar text-left "
+            id="v-pills-disabled-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-disabled"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-disabled"
+            aria-selected="false"
+          >
+            Image Detection
+          </button>
+          <button
+            class="nav-link nav-link-sidebar text-left "
+            id="v-pills-messages-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-messages"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-messages"
+            aria-selected="false"
+          >
+            About
+          </button>
+        </div>
+        <div class="tab-content col-9 pt-3" id="v-pills-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="v-pills-home"
+            role="tabpanel"
+            aria-labelledby="v-pills-home-tab"
+            tabindex="0"
+          >
+            <iframe
+              class="embed-responsive-item w-100"
+              style="min-height: 600px"
+              src="https://imageenhancment-bagfwum3jkrc2rpxmeclgg.streamlit.app?embed=true&embed_options=light_theme"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="v-pills-profile"
+            role="tabpanel"
+            aria-labelledby="v-pills-profile-tab"
+            tabindex="0"
+          >
+            <iframe
+              class="embed-responsive-item w-100"
+              style="min-height: 1000px"
+              src="https://imageenhancment-yffyqvaavwrqfasdmagsgv.streamlit.app?embed=true&embed_options=light_theme"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="v-pills-disabled"
+            role="tabpanel"
+            aria-labelledby="v-pills-disabled-tab"
+            tabindex="0"
+          >
+            <iframe
+              class="embed-responsive-item w-100"
+              style="min-height:600px"
+              src="https://liteobjectdetection-orgisdp8pyqctbtdfadpmv.streamlit.app?embed=true&embed_options=light_theme"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div
+            class="tab-pane fade m-0 p-0"
+            id="v-pills-messages"
+            role="tabpanel"
+            aria-labelledby="v-pills-messages-tab"
+            tabindex="0"
+          >
+            <div class="card">
+              <img
+                src="path/to/your/image.jpg"
+                alt="Profile Image"
+                class="profile-img"
+              />
+              <div class="card-body">
+                <h2 class="card-title">About Me</h2>
+                <p class="card-text">
+                  Saya sedang mengerjakan tugas akhir saya menggunakan teknologi
+                  terkini.
+                </p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <strong>Nama:</strong> Ilham M
+                  </li>
+                  <li class="list-group-item">
+                    <strong>NIM:</strong> 20220130033
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Kampus:</strong> SOCS - Universitas Nusa Putra
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="cookie-banner">
+          This website uses cookies to enable Streamlit embed. By using this
+          site, you agree to our use of cookies.
+          <button onclick="acceptCookies()" class="cookie-accept ms-3">
+            Accept Cookies
+          </button>
+          <button onclick="deniedCookies()" class="cookie-denied ms-3">
+            Cancel
+          </button>
+        </div>
+      </div>
+
+      <!-- Hapus baris ini karena Anda sudah memuat Bootstrap CSS di bagian atas -->
+      <div
+        class="w-100 text-center bg-light p-3"
+        style="
+          color: var(--bs-purple);
+          border-top: 0.1rem solid var(--bs-purple);
+        "
+      >
+        <p>
+          &copy; 2024 ilham.muharom@nusaputra.ac.id |
+          <a
+            href="http://streamlit.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Streamlit</a
+          >
+          | Python
+        </p>
+      </div>
+    </div>
+
+    <!-- ... Your existing HTML ... -->
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+  <script>
+    function acceptCookies() {
+      // Set a cookie with a 30-day expiration
+      document.cookie =
+        "cookies_accepted=true; expires=" +
+        new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000).toUTCString();
+
+      // Hide the banner
+      document.getElementById("cookie-banner").style.display = "none";
+    }
+
+    function deniedCookies() {
+      // Hide the banner
+      document.getElementById("cookie-banner").style.display = "none";
+    }
+
+    // Check if the user has already accepted cookies
+    const cookiesAccepted = document.cookie.includes("cookies_accepted=true");
+
+    // If not accepted, show the banner
+    if (!cookiesAccepted) {
+      document.getElementById("cookie-banner").style.display = "block";
+    }
+
+    // Dropzone.autoDiscover = false;
+    // $(function () {
+    //   var dropzone = new Dropzone(".dropzone", {
+    //     acceptedFiles: "image/jpeg, image/png, image/jpg",
+    //     maxFilesize: 5120,
+    //     url: "https://81a6-35-223-108-66.ngrok-free.app/upload_image",
+    //     method: "post",
+    //     headers: { "Access-Control-Allow-Headers": "Accept" },
+    //     addRemoveLinks: true,
+    //     // Override default preview function
+    //     preview: function (file) {
+    //       var reader = new FileReader();
+    //       reader.onload = function (event) {
+    //         var preview = $("<img>");
+    //         preview.attr("src", event.target.result);
+    //         preview.appendTo(this.element);
+    //       };
+    //       reader.readAsDataURL(file);
+    //     },
+
+    //     // Show loading overlay while waiting for response
+    //     sending: function (file, xhr, formData) {
+    //       $(".dropzone").addClass("loading");
+    //     },
+
+    //     // Hide loading overlay after success
+    //     success: function (file, response) {
+    //       $(".dropzone").removeClass("loading");
+    //       Swal.fire({
+    //         title: "Success",
+    //         text: "Image uploaded successfully!",
+    //         icon: "success",
+    //       });
+    //     },
+
+    //     // Show error message if error occurs
+    //     error: function (file, response) {
+    //       $(".dropzone").removeClass("loading");
+    //       Swal.fire({
+    //         title: "Error",
+    //         text: response.responseText,
+    //         icon: "error",
+    //       });
+    //     },
+    //   });
+    // });
+  </script>
+</html>
